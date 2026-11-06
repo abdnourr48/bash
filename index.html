@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f6f0">
+  <meta name="description" content="Bash Academy: free, offline Bash lessons, 505 command references, exercises and an interactive virtual Linux terminal. Arabic, French, English.">
+  <title>Bash Academy</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#lessons" aria-label="Bash Academy home">
+        <span class="logo" aria-hidden="true">$_</span>
+        <span><strong>BASH ACADEMY</strong><small>LINUX • TERMINAL • PRACTICE</small></span>
+      </a>
+      <div class="header-actions">
+        <label class="sr-only" for="lang">Language / اللغة</label>
+        <select id="lang" class="top-select" aria-label="Choose language"><option value="ar">العربية</option><option value="fr">Français</option><option value="en">English</option></select>
+        <button id="theme" type="button" class="theme-btn" aria-label="Toggle dark mode" title="Dark mode">☾</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="tiny-dot"></span> BASH ONLY · FREE & OFFLINE · V9</span>
+        <h1 id="hero-title" data-t="hero">تعلم Bash من الصفر إلى الاحتراف.</h1>
+        <p data-t="subtitle">دروس منظمة وأوامر مشروحة ومختبر Linux تفاعلي في مكان واحد.</p>
+        <div class="hero-actions">
+          <button type="button" class="btn solid" data-go="lessons" data-t="start">ابدأ الدروس <span aria-hidden="true">↗</span></button>
+          <button type="button" class="btn outline" data-go="lab" data-t="openLab">افتح المختبر</button>
+        </div>
+        <div class="hero-metrics" aria-label="Curriculum details"><span><b id="numLessons">92</b> <span data-t="lessons">درس</span></span><i></i><span><b id="numCommands">505</b> <span data-t="commands">إدخال للأوامر</span></span><i></i><span><b>3</b> <span data-t="languages">لغات</span></span></div>
+      </div>
+      <div class="hero-terminal" aria-label="Example virtual terminal"><div class="mini-bar"><span class="dots"><i></i><i></i><i></i></span><span>student@bash-academy:~</span><span>⌘</span></div><pre><span class="prompt">student@lab:~$</span> pwd
+/home/student
+<span class="prompt">student@lab:~$</span> ls
+Documents/  logs/  data/  notes.txt
+<span class="prompt">student@lab:~$</span> <span class="cursor">▌</span></pre><span class="terminal-foot">LOCAL SIMULATION • SAFE PRACTICE</span></div>
+    </section>
+
+    <nav class="tabs" aria-label="Main sections" role="tablist">
+      <button type="button" class="tab active" role="tab" aria-selected="true" data-view="lessons"><span class="tab-symbol">▤</span> <span data-t="tabLessons">الدروس</span></button>
+      <button type="button" class="tab" role="tab" aria-selected="false" data-view="reference"><span class="tab-symbol">⌘</span> <span data-t="tabReference">الأوامر</span></button>
+      <button type="button" class="tab" role="tab" aria-selected="false" data-view="lab"><span class="tab-symbol">&gt;_</span> <span data-t="tabLab">المختبر</span></button>
+      <button type="button" class="tab" role="tab" aria-selected="false" data-view="practice"><span class="tab-symbol">◎</span> <span data-t="tabPractice">التحديات</span></button>
+    </nav>
+
+    <section class="view active" id="view-lessons" aria-label="Bash lessons">
+      <div class="section-heading"><div><span class="section-kicker" data-t="structured">LEARNING PATH / مسار التعلم</span><h2 data-t="lessonsTitle">الدروس من البداية إلى المتقدم</h2><p data-t="lessonsSubtitle">كل درس فيه شرح، مثال، تطبيق، وملاحظات مفيدة.</p></div><div class="progress-chip"><span data-t="completed">مكتملة</span> <b id="completedLessons">0/92</b><div class="progress-track"><i id="lessonProgress"></i></div></div></div>
+      <div class="lesson-tools"><div class="search"><span aria-hidden="true">⌕</span><input id="lessonSearch" type="search" placeholder="ابحث عن درس..." data-placeholder="findLesson" autocomplete="off"></div><select id="moduleFilter" aria-label="Filter modules"></select><button id="unfinishedFilter" type="button" class="btn subtle" data-t="unfinished">غير المكتملة</button></div>
+      <div class="learn-layout"><aside class="modules panel"><div class="panel-top"><b data-t="modules">الوحدات</b><span id="moduleCount">14</span></div><div id="moduleList" class="module-list"></div></aside><div class="lesson-cards" id="lessonCards"></div></div>
+      <div id="lessonReader" class="reader panel" hidden aria-live="polite"></div>
+    </section>
+
+    <section class="view" id="view-reference" aria-label="Bash command reference" hidden>
+      <div class="section-heading"><div><span class="section-kicker">COMMAND REFERENCE / BASH</span><h2 data-t="referenceTitle">موسوعة أوامر Bash</h2><p data-t="referenceSubtitle">التركيب، المعاملات، الأمثلة، والتحذيرات في بطاقات سهلة.</p></div><span class="count-pill" id="referenceCount">505</span></div>
+      <div class="reference-controls"><div class="search"><span aria-hidden="true">⌕</span><input id="cmdSearch" type="search" data-placeholder="findCommand" placeholder="ابحث عن أمر أو شرح..." autocomplete="off"></div><select id="catFilter" aria-label="Command category"></select><select id="levelFilter" aria-label="Command level"><option value="all">All levels</option><option value="1">01 — Beginner</option><option value="2">02 — Intermediate</option><option value="3">03 — Advanced</option></select><label class="supported-toggle"><input type="checkbox" id="onlyLab"><span data-t="labSupported">قابلة للتجربة</span></label></div>
+      <div class="command-grid" id="commandGrid"></div><div id="referenceEmpty" class="empty" hidden data-t="noResult">لا توجد نتائج. جرّب كلمة أخرى.</div><button id="showMore" class="btn outline center" type="button" data-t="showMore">عرض المزيد</button>
+    </section>
+
+    <section class="view" id="view-lab" aria-label="Virtual Bash terminal" hidden>
+      <div class="section-heading"><div><span class="section-kicker">VIRTUAL LINUX / HANDS-ON</span><h2 data-t="labTitle">مختبر Bash التفاعلي</h2><p data-t="labSubtitle">ملفات افتراضية وأوامر تفاعلية؛ بلا وصول لجهازك الحقيقي.</p></div><span class="sim-label">● SIMULATION ONLY</span></div>
+      <div class="lab-layout">
+        <div class="lab-main">
+          <section class="terminal-shell" aria-label="Virtual Bash console"><div class="term-bar"><span class="dots"><i></i><i></i><i></i></span><b>bash — student@training</b><span id="exitBadge">EXIT 0</span></div><div id="termOutput" class="term-output" role="log" aria-live="polite"><div class="term-message">Bash Academy • Virtual Linux lab
+Type <b>help</b> to see supported commands.
+No commands are run on your computer.</div></div><form id="terminalForm" class="terminal-form"><label class="term-prompt" id="termPrompt" for="commandInput">student@lab:~$</label><input id="commandInput" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" placeholder="ls -la"><button type="submit" class="execute" data-t="run">تنفيذ ↵</button></form></section>
+          <div class="terminal-shortcuts" id="terminalShortcuts"><button type="button" data-insert=" | ">|</button><button type="button" data-insert=" > ">&gt;</button><button type="button" data-insert=" >> ">&gt;&gt;</button><button type="button" data-insert=" && ">&amp;&amp;</button><button type="button" data-insert="$">$</button><button type="button" data-insert="../">../</button><button type="button" data-insert="\"\"">""</button><button type="button" data-insert=" -">-</button></div>
+          <div class="lab-toolbar"><button type="button" class="btn subtle" id="undoBtn" data-t="undo">↶ تراجع</button><button type="button" class="btn subtle" id="redoBtn" data-t="redo">↷ إعادة</button><button type="button" class="btn subtle" id="clearBtn" data-t="clear">مسح الشاشة</button><button type="button" class="btn subtle" id="resetBtn" data-t="reset">تهيئة المختبر</button></div>
+          <div class="diagnostic panel"><div class="panel-top"><b data-t="diagnostic">مساعد تفسير الأخطاء</b><span>STATUS / HELP</span></div><div id="diagnosticText" class="diagnostic-body" role="status" data-t="diagnosticDefault">نفّذ أمراً لعرض ملاحظات عن نتيجته.</div></div>
+          <section class="network panel" aria-label="Simulated networking"><div class="panel-top"><b data-t="network">مختبر أعطال الشبكات</b><span>OFFLINE</span></div><p data-t="networkTip">اختَر حالة، ثم شخّصها بأوامر ip وping وdig وss وcurl.</p><div class="network-controls"><select id="networkFault" aria-label="Network scenario"><option value="healthy">Healthy network</option><option value="adapter">Adapter down</option><option value="gateway">Gateway unreachable</option><option value="dns">DNS failure</option><option value="web">Web service offline</option><option value="firewall">Firewall blocks HTTPS</option></select><button id="applyNetwork" type="button" class="btn outline" data-t="apply">تحميل الحالة</button></div><p id="networkStatus" class="tiny-note">● VIRTUAL NETWORK ONLY — no live packets.</p></section>
+        </div>
+        <aside class="lab-sidebar">
+          <section class="panel explorer"><div class="panel-top"><b data-t="files">الملفات الافتراضية</b><span id="virtualCount">0</span></div><p class="panel-note" data-t="filesHint">اضغط على ملف لفتحه وتعديله.</p><div id="fileTree" class="file-tree"></div></section>
+          <section id="fileEditor" class="panel editor" hidden><div class="panel-top"><b data-t="editor">تعديل ملف افتراضي</b><button type="button" id="editorClose" class="x-button" aria-label="Close editor">×</button></div><div id="editingPath" class="file-path" dir="ltr"></div><textarea id="editingContent" rows="8" dir="ltr" spellcheck="false" aria-label="Edit virtual file"></textarea><button id="editorSave" type="button" class="btn solid full" data-t="save">حفظ التغيير</button></section>
+          <section class="panel examples"><div class="panel-top"><b data-t="examples">أوامر للتجربة</b><span>QUICK START</span></div><div id="quickExamples" class="example-list"></div></section>
+        </aside>
+      </div>
+    </section>
+
+    <section class="view" id="view-practice" aria-label="Bash challenges" hidden>
+      <div class="section-heading"><div><span class="section-kicker">TRAINING MISSIONS / BASH</span><h2 data-t="practiceTitle">تحديات عملية خطوة بخطوة</h2><p data-t="practiceSubtitle">نفّذ الأوامر في المختبر، والتصحيح يتحقق من الملفات الافتراضية.</p></div><span class="count-pill"><span id="missionDone">0</span> / <span id="missionTotal">18</span></span></div>
+      <div class="practice-layout"><div id="missions" class="mission-list"></div><section class="panel mission-detail"><div class="mission-header"><span class="mission-number" id="missionLabel">MISSION 01</span><span id="missionStatus">○</span></div><h3 id="missionName">—</h3><p id="missionDescription">—</p><div class="lesson-snippet"><span data-t="hint">اقتراح للتجربة</span><code id="missionHint" dir="ltr"></code></div><div class="mission-actions"><button id="missionStart" type="button" class="btn outline" data-t="prepareMission">حضّر المختبر</button><button id="missionCheck" type="button" class="btn solid" data-t="verifyMission">تحقق من الحل</button></div><p id="missionFeedback" role="status"></p><hr><b data-t="quiz">اختبر فهمك</b><div id="miniQuiz" class="mini-quiz"></div></section></div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="wrap footer-content"><span>⌘ <strong>BASH ACADEMY</strong> <span data-t="footer">تعلّم وطبّق محلياً، بدون حساب.</span></span><small>V9 • HTML / CSS / JAVASCRIPT • OPEN LOCALLY</small></div></footer>
+
+  <dialog id="commandDialog" class="detail-dialog"><div class="dialog-inner"><div class="dialog-head"><span class="dialog-kicker" data-t="commandDetail">تفاصيل الأمر</span><button type="button" class="x-button" id="dialogClose" aria-label="Close">×</button></div><div id="dialogContent"></div></div></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <script src="js/data.js" defer></script><script src="js/engine.js" defer></script><script src="js/app.js" defer></script>
+</body>
+</html>
